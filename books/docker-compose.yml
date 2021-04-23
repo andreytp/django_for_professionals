@@ -1,0 +1,34 @@
+version: '3'
+
+
+services:
+    web:
+        build: .
+        command: python /code/manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/code
+
+        ports: 
+            - 8000:8000
+        depends_on:
+            - db
+        links:
+            - db:db
+        networks:
+            books_network:
+
+    db:
+        image: postgres
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            POSTGRES_PASSWORD: postgres
+        ports:
+            - '5432'
+        networks:
+            books_network:
+networks:
+    books_network:
+volumes:
+    postgres_data:
+
