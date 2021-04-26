@@ -173,7 +173,7 @@ ACCOUNT_USERNAME_REQUIRED = False # new
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # new
 ACCOUNT_EMAIL_REQUIRED = True # new
 ACCOUNT_UNIQUE_EMAIL = True # new
-
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
 
 SITE_ID = 1
 
@@ -183,6 +183,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
