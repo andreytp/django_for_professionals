@@ -12,8 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: cd ./books && docker-compose up -d
+        run: |
+          cd ./books
+          docker-compose up -d
       - name: Test
-        run: ls -la
+        run: |
+          ls -la
+          cd ./code
+          ls -la
+          cd ../books
+          ls -la
 #         run: docker-compose exec -d web python manage.py test -v 4
 
