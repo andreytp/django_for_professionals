@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
 ]
 
 # django-crispy-forms
@@ -77,6 +78,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bookstore_project.urls'
+
+APPEND_SLASH = False
 
 TEMPLATES = [
     {
