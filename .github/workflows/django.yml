@@ -22,7 +22,7 @@ jobs:
           ls -la
           cd ../books
           ls -la
-          a='exec web python manage.py test'
-          docker-compose "$a"
+          a='docker-compose exec web python manage.py test'
+          "$a"
 #         run: docker-compose exec -d web python manage.py test -v 4
 
