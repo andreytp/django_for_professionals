@@ -15,6 +15,7 @@ jobs:
         run: |
           cd ./books
           a='up --detach'
+          echo "$a"
           docker-compose "$a"
       - name: Test
         run: |
