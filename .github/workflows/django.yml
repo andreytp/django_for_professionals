@@ -14,7 +14,8 @@ jobs:
       - name: Build the stack
         run: |
           cd ./books
-          docker-compose 'up --detach'
+          a='up --detach'
+          docker-compose "$a"
       - name: Test
         run: |
           ls -la
@@ -22,6 +23,7 @@ jobs:
           ls -la
           cd ../books
           ls -la
-          docker-compose 'exec web python manage.py test'
+          a='exec web python manage.py test'
+          docker-compose "$a"
 #         run: docker-compose exec -d web python manage.py test -v 4
 
