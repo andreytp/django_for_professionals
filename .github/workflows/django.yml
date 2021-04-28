@@ -22,7 +22,6 @@ jobs:
           ls -la
           cd ../books
           ls -la
-          docker-compose images
-#         docker-compose exec\ web\ python\ manage.py\ test
+          docker-compose exec 'web' 'python manage.py test'
 #         run: docker-compose exec -d web python manage.py test -v 4
 
