@@ -14,5 +14,5 @@ jobs:
       - name: Build the stack
         run: cd books && docker-compose up -d
       - name: Test
-        run: docker-compose -T exec web python manage.py test -v 4
+        run: docker-compose exec -T web python manage.py test -v 4
 
