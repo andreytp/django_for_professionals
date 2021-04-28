@@ -8,6 +8,10 @@ django = "*"
 psycopg2-binary = "*"
 django-crispy-forms = "*"
 django-allauth = "*"
+pillow = "*"
+flake8 = "*"
+pycodestyle = "*"
+pyflakes = "*"
 
 [dev-packages]
 
