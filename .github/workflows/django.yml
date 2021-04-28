@@ -14,9 +14,7 @@ jobs:
       - name: Build the stack
         run: |
           cd ./books
-          a='up detach'
-          echo "$a"
-          docker-compose "$a"
+          docker-compose up -d
       - name: Test
         run: |
           ls -la
