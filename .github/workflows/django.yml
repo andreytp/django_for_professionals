@@ -17,12 +17,7 @@ jobs:
           docker-compose up -d
       - name: Test
         run: |
-          ls -la
-          cd ./code
-          ls -la
-          cd ../books
-          ls -la
-          python\ manage.py\ test
-#         docker-compose exec\ web\ python\ manage.py\ test
+          docker-compose exec web echo $PATH
+          
 #         run: docker-compose exec -d web python manage.py test -v 4
 
