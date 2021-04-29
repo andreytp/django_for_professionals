@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
+
 class Book(models.Model):
     id = models.UUIDField(
         primary_key=True,
@@ -14,11 +15,17 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     covered = models.ImageField(upload_to='cover/', blank=True)
 
+    class Meta:
+        permissions = [
+            ('special_status', 'Can read all books'),
+        ]
+
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('book_detail', args=[(self.id), ])
+
 
 class Review(models.Model):
     book = models.ForeignKey(
@@ -31,7 +38,6 @@ class Review(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
     )
-
 
     def __str__(self):
         return self.review
