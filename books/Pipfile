@@ -12,6 +12,7 @@ pillow = "*"
 flake8 = "*"
 pycodestyle = "*"
 pyflakes = "*"
+stripe = "*"
 
 [dev-packages]
 

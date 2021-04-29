@@ -8,6 +8,9 @@ services:
         environment:
             SECRET_KEY: 'django-insecure-l&riw^1s(fa*725l7a@&x!hyt09vz9jqqvrq4hbjl1jn#tln2h'
             DEBUG: '1'
+            STRIPE_TEST_PUBLISHABLE_KEY: 'pk_test_51IlZBDEOZ2cof0yT248Okfl9stFfO8z1npMLBrW5gBHryiP8c5mGYTQQiolyr8smfHAJGJMoSdItl3ZUsixo7SSg00Lj0sFXAR'
+            STRIPE_TEST_SECRET_KEY: 'sk_test_51IlZBDEOZ2cof0yTUBTtch5ujZt76etq3xz40brYLNS3DV4bC3nBfWmbdIumhL6FqxpGDih4nWH7bLVMfA61hBGx00jFtJZnrW'
+
 
         volumes:
             - .:/code
