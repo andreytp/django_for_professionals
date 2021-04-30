@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import socket
+
+hostname, _, ips = socket.gethostbyname_ex(
+    socket.gethostname()
+)
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,6 +63,7 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.mailchimp',
     # 'allauth.socialaccount.providers.microsoft',
     # 'allauth.socialaccount.providers.telegram',
+    'debug_toolbar',
 
 
     'users.apps.UsersConfig',
@@ -76,6 +83,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'bookstore_project.urls'
