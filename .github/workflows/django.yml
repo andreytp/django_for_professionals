@@ -18,7 +18,7 @@ jobs:
       - name: Test
         run: |
           cd ./books
-          docker-compose -f docker-compose.yml exec -d web python manage.py test -v 3
+          docker-compose -f docker-compose.yml exec web python manage.py test -v 3
           
 #         run: docker-compose exec -d web python manage.py test -v 4
 
