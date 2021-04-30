@@ -18,7 +18,7 @@ jobs:
       - name: Test
         run: |
           cd ./books
-          docker exec -it books_web_1 ls
+          docker exec -t books_web_1 ls
 #         docker-compose -f docker-compose.yml ps
 #         docker-compose -f docker-compose.yml exec web  python manage.py test 2>&1 | echo
 #         docker-compose -f docker-compose.yml exec web python manage.py test -v 3
