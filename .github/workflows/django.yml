@@ -1,4 +1,4 @@
-name: Django CI
+xname: Django CI
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - name: Test
         run: |
           cd ./books
-          docker run -it --entrypoint /bin/bash books_web_1
+          docker exec -it books_web_1 ls
 #         docker-compose -f docker-compose.yml ps
 #         docker-compose -f docker-compose.yml exec web  python manage.py test 2>&1 | echo
 #         docker-compose -f docker-compose.yml exec web python manage.py test -v 3
