@@ -14,6 +14,7 @@ pycodestyle = "*"
 pyflakes = "*"
 stripe = "*"
 django-debug-toolbar = "*"
+django-admin-honeypot = "*"
 
 [dev-packages]
 
