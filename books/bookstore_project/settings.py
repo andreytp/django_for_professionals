@@ -41,7 +41,7 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 ALLOWED_HOSTS = ['*', ]
 
 if ENVIRONMENT == 'production':
-    ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
+    ALLOWED_HOSTS = ['limitless-ridge-35845.herokuapp.com', 'localhost', '127.0.0.1']
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
     # SECURE_HSTS_SECONDS = 
@@ -54,6 +54,7 @@ if ENVIRONMENT == 'production':
     SECURE_HSTS_PRELOAD = True
     SECURE_SSL_REDIRECT = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
