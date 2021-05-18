@@ -4,7 +4,8 @@ version: '3'
 services:
     web:
         build: .
-        command: python /code/manage.py runserver 0.0.0.0:8000
+        # command: python /code/manage.py runserver 0.0.0.0:8000
+        command: gunicorn bookstore_project.wsgi -b 0.0.0.0:8000
         environment:
             ENVIRONMENT: 'development'
             SECRET_KEY: '@)15hki(mp&9tjkhg%!synuvw_zv&1e8b@-cxu34ve00yinkhn+6uzb@hq8q'
@@ -18,6 +19,7 @@ services:
 
         ports: 
             - 8000:8000
+            - 9999:9999
         depends_on:
             - db
         links:

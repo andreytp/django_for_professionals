@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import socket
 import random
+import dj_database_url
 
 hostname, _, ips = socket.gethostbyname_ex(
     socket.gethostname()
@@ -29,8 +30,9 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(60)])
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+KEY_VOCABULARY = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+SECRET_KEY = ''.join([random.SystemRandom().choice(KEY_VOCABULARY)
+                        for _ in range(60)])
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,7 +41,7 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 ALLOWED_HOSTS = ['*', ]
 
 if ENVIRONMENT == 'production':
-    ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
+    ALLOWED_HOSTS = ['limitless-ridge-35845.herokuapp.com', 'localhost', '127.0.0.1']
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
     # SECURE_HSTS_SECONDS = 
@@ -52,6 +54,7 @@ if ENVIRONMENT == 'production':
     SECURE_HSTS_PRELOAD = True
     SECURE_SSL_REDIRECT = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
@@ -62,8 +65,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.sites',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
 
     # Third-party
@@ -105,6 +109,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -147,6 +152,11 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
